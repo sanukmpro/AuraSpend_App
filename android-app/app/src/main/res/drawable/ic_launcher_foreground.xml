@@ -1,0 +1,47 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Glowing backdrop halo -->
+    <path
+        android:pathData="M 54,54 m -24,0 a 24,24 0 1,1 48,0 a 24,24 0 1,1 -48,0"
+        android:fillAlpha="0.30"
+        android:fillColor="#BD8BFF" />
+
+    <!-- Accent sparkle top-right -->
+    <path
+        android:pathData="M 72,34 Q 72,39 68,39 Q 72,39 72,44 Q 72,39 76,39 Q 72,39 72,34 Z"
+        android:fillColor="#F4EAFF" />
+
+    <!-- Accent sparkle bottom-left -->
+    <path
+        android:pathData="M 36,68 Q 36,71 33,71 Q 36,71 36,74 Q 36,71 39,71 Q 36,71 36,68 Z"
+        android:fillColor="#D8B2FF" />
+
+    <!-- Main Aura 4-Point Sparkle Star -->
+    <path
+        android:pathData="M 54,28 Q 54,54 28,54 Q 54,54 54,80 Q 54,54 80,54 Q 54,54 54,28 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startX="36"
+                android:startY="32"
+                android:endX="72"
+                android:endY="76"
+                android:type="linear">
+                <item android:offset="0.0" android:color="#FFFFFF" />
+                <item android:offset="0.25" android:color="#F0DFFF" />
+                <item android:offset="0.65" android:color="#B87CFF" />
+                <item android:offset="1.0" android:color="#7732E6" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Center core shine -->
+    <path
+        android:pathData="M 54,46 L 62,54 L 54,62 L 46,54 Z"
+        android:fillAlpha="0.5"
+        android:fillColor="#FFFFFF" />
+</vector>

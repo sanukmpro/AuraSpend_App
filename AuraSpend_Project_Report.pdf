@@ -1,0 +1,1074 @@
+%PDF-1.4
+%????
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Oblique >>
+endobj
+6 0 obj
+<< /Length 6088 >>
+stream
+1.0 1.0 1.0 rg
+0 0 595 842 re f
+0.647 0.423 1.0 rg
+0 834 595 8 re f
+BT
+/F2 8 Tf
+0.55 0.55 0.60 rg
+45 30 Td
+(Confidential - Generated for AuraSpend Android Project) Tj
+ET
+0.85 0.85 0.90 RG
+0.5 w
+45 42 m 550 42 l S
+BT
+/F1 8 Tf
+0.647 0.423 1.0 rg
+500 30 Td
+(Page 1) Tj
+ET
+BT
+/F1 20 Tf
+0.12 0.06 0.22 rg
+45 780 Td
+(AuraSpend     Android Native Java Migration) Tj
+ET
+BT
+/F1 12 Tf
+0.52 0.28 0.85 rg
+45 754 Td
+(Complete Technical Project Report & Java Implementation Guide) Tj
+ET
+BT
+/F3 9 Tf
+0.50 0.50 0.55 rg
+45 736 Td
+(Platform: Android \(Java 17, Min SDK 26, Target SDK 35\)  |  Engine: Standalone SQLite) Tj
+ET
+0.80 0.75 0.90 RG
+1 w
+45 720 m 550 720 l S
+0.95 0.92 1.0 rg
+45 690 505 22 re f
+0.647 0.423 1.0 rg
+45 690 4 22 re f
+BT
+/F1 13 Tf
+0.18 0.08 0.32 rg
+56 696 Td
+(1. Executive Summary) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 668 Td
+(AuraSpend is a personal finance and expense tracking Android application written in native Java) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 655 Td
+(with XML layouts and an embedded standalone SQLite database. The project was successfully) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 642 Td
+(transitioned from an earlier prototype requiring a PC-hosted Spring Boot and MySQL server to a) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 629 Td
+(100% self-contained, offline-first mobile application.) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 612 Td
+(Key Achievements:) Tj
+ET
+0.647 0.423 1.0 rg
+50 597 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 595 Td
+(100% Standalone Operation: Requires zero external servers, zero cloud dependency, and zero) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 582 Td
+(PC-hosted database. All data resides securely on the device.) Tj
+ET
+0.647 0.423 1.0 rg
+50 569 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 567 Td
+(Multi-User Support: Multiple user accounts can register and authenticate on the same phone) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 554 Td
+(with isolated data and SHA-256 hashed passwords.) Tj
+ET
+0.647 0.423 1.0 rg
+50 541 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 539 Td
+(Custom UI & Boot Animation: Crafted luxury obsidian-purple theme \(#090414\), 3D squircle) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 526 Td
+(app logo, and a choreographed startup boot animation with halo pulse.) Tj
+ET
+0.647 0.423 1.0 rg
+50 513 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 511 Td
+(Full Feature Parity: Dashboard budget progress ring, searchable history, 3x2 category) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 498 Td
+(sheets, on-device PDF export, 9 currencies, and JSON backup/restore.) Tj
+ET
+0.95 0.92 1.0 rg
+45 471 505 22 re f
+0.647 0.423 1.0 rg
+45 471 4 22 re f
+BT
+/F1 13 Tf
+0.18 0.08 0.32 rg
+56 477 Td
+(2. System Architecture) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 449 Td
+(The application implements a clean layered MVC architecture tailored for Android:) Tj
+ET
+0.647 0.423 1.0 rg
+50 434 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 432 Td
+(Presentation Layer: SplashActivity.java \(boot animation\), MainActivity.java \(view) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 419 Td
+(orchestration\), CircularProgressView.java \(custom Canvas 2D ring\), BottomSheetDialogs, and) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 406 Td
+(Material Components.) Tj
+ET
+0.647 0.423 1.0 rg
+50 393 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 391 Td
+(Domain & Model Layer: User.java, Expense.java, AppSettings.java, Category.java \(6) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 378 Td
+(categories with emojis\), and Currency.java \(9 currencies with symbol formatting\).) Tj
+ET
+0.647 0.423 1.0 rg
+50 365 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 363 Td
+(Data Layer: DatabaseHelper.java \(SQLiteOpenHelper managing auraspend.db\) and) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 350 Td
+(SessionManager.java \(SharedPreferences persistent session store\).) Tj
+ET
+0.647 0.423 1.0 rg
+50 337 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 335 Td
+(Security & Export: Android FileProvider providing secure URI grants for on-device PDF) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 322 Td
+(report exports and JSON backups.) Tj
+ET
+0.95 0.92 1.0 rg
+45 295 505 22 re f
+0.647 0.423 1.0 rg
+45 295 4 22 re f
+BT
+/F1 13 Tf
+0.18 0.08 0.32 rg
+56 301 Td
+(3. Standalone SQLite Database Architecture) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 273 Td
+(The database is embedded inside the Android app private storage at) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 260 Td
+(/data/data/com.auraspend.app/databases/auraspend.db.) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 243 Td
+(Relational Database Schema \(3 Tables\):) Tj
+ET
+0.90 0.85 0.98 rg
+45 222 505 18 re f
+BT
+/F1 9 Tf
+0.18 0.08 0.32 rg
+51 227 Td
+(Table Name) Tj
+131 227 Td
+(Primary Key) Tj
+246 227 Td
+(Key Columns) Tj
+416 227 Td
+(Purpose) Tj
+ET
+0.85 0.85 0.90 RG
+0.5 w
+45 204 m 550 204 l S
+BT
+/F2 8.5 Tf
+0.25 0.25 0.28 rg
+51 209 Td
+(users) Tj
+131 209 Td
+(id \(AUTOINCREMENT\)) Tj
+246 209 Td
+(name, email \(UNIQUE\), password_hash, currency) Tj
+416 209 Td
+(Multi-user authentication & profile) Tj
+ET
+0.98 0.97 1.0 rg
+45 186 505 18 re f
+0.85 0.85 0.90 RG
+0.5 w
+45 186 m 550 186 l S
+BT
+/F2 8.5 Tf
+0.25 0.25 0.28 rg
+51 191 Td
+(expenses) Tj
+131 191 Td
+(id \(AUTOINCREMENT\)) Tj
+246 191 Td
+(user_email \(FK\), amount, date, category, desc) Tj
+416 191 Td
+(Financial transaction records) Tj
+ET
+0.85 0.85 0.90 RG
+0.5 w
+45 168 m 550 168 l S
+BT
+/F2 8.5 Tf
+0.25 0.25 0.28 rg
+51 173 Td
+(settings) Tj
+131 173 Td
+(user_email \(PK\)) Tj
+246 173 Td
+(currency, budget, theme) Tj
+416 173 Td
+(User-specific budget & appearance) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 146 Td
+(Database Implementation Details \(DatabaseHelper.java\):) Tj
+ET
+0.647 0.423 1.0 rg
+50 131 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 129 Td
+(Thread-Safe Singleton: DatabaseHelper.getInstance\(context\) prevents connection leaks and) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 116 Td
+(database lock contention.) Tj
+ET
+0.647 0.423 1.0 rg
+50 103 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 101 Td
+(SHA-256 Cryptographic Hashing: Passwords are encrypted with SHA-256 message digests prior) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 88 Td
+(to storage; plaintext is never retained.) Tj
+ET
+
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 6639 >>
+stream
+1.0 1.0 1.0 rg
+0 0 595 842 re f
+0.647 0.423 1.0 rg
+0 834 595 8 re f
+BT
+/F2 8 Tf
+0.55 0.55 0.60 rg
+45 815 Td
+(AuraSpend - Android Technical Report & Implementation Guide) Tj
+ET
+0.85 0.85 0.90 RG
+0.5 w
+45 808 m 550 808 l S
+BT
+/F2 8 Tf
+0.55 0.55 0.60 rg
+45 30 Td
+(Confidential - Generated for AuraSpend Android Project) Tj
+ET
+0.85 0.85 0.90 RG
+0.5 w
+45 42 m 550 42 l S
+BT
+/F1 8 Tf
+0.647 0.423 1.0 rg
+500 30 Td
+(Page 2) Tj
+ET
+0.647 0.423 1.0 rg
+50 782 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 780 Td
+(Multi-User Isolation: All queries for expenses and settings strictly enforce WHERE) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 767 Td
+(user_email = ? clauses, isolating each user's finances.) Tj
+ET
+0.647 0.423 1.0 rg
+50 754 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 752 Td
+(Performance Indexing: Indexes idx_expenses_user and idx_expenses_date guarantee) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 739 Td
+(sub-millisecond lookups for history and reports.) Tj
+ET
+0.647 0.423 1.0 rg
+50 726 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 724 Td
+(Atomic Transactions: importBackup\(\) wraps batch insertions in beginTransaction\(\) and) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 711 Td
+(setTransactionSuccessful\(\), guaranteeing ACID integrity.) Tj
+ET
+0.95 0.92 1.0 rg
+45 684 505 22 re f
+0.647 0.423 1.0 rg
+45 684 4 22 re f
+BT
+/F1 13 Tf
+0.18 0.08 0.32 rg
+56 690 Td
+(4. Screen-by-Screen Java Code Walkthrough) Tj
+ET
+BT
+/F1 11 Tf
+0.35 0.18 0.55 rg
+45 658 Td
+(4.1 Boot-Up Splash Screen \(SplashActivity.java\)) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 642 Td
+(SplashActivity serves as the application's launcher activity, orchestrating a multi-stage) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 629 Td
+(startup sequence before transitioning to MainActivity:) Tj
+ET
+0.647 0.423 1.0 rg
+50 614 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 612 Td
+(Stage 1 \(0ms\): Ambient background glow orbs \(#090414\) fade in.) Tj
+ET
+0.647 0.423 1.0 rg
+50 599 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 597 Td
+(Stage 2 \(0-750ms\): The 3D squircle logo springs in from scale 0.5 to 1.0 using an) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 584 Td
+(OvershootInterpolator\(1.4f\) for a tactile bounce.) Tj
+ET
+0.647 0.423 1.0 rg
+50 571 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 569 Td
+(Stage 3 \(100-800ms\): A radial halo expands behind the logo and transitions into an) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 556 Td
+(infinite ValueAnimator breathing pulse.) Tj
+ET
+0.647 0.423 1.0 rg
+50 543 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 541 Td
+(Stage 4 \(300-900ms\): The brand title 'AuraSpend' and subtitle 'Smart money, simple life.') Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 528 Td
+(slide up 40px and fade in with DecelerateInterpolator.) Tj
+ET
+0.647 0.423 1.0 rg
+50 515 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 513 Td
+(Stage 5 \(1850ms\): Smooth crossfade transition into MainActivity with activity finish\(\) so) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 500 Td
+(users cannot back-navigate to the splash screen.) Tj
+ET
+BT
+/F1 11 Tf
+0.35 0.18 0.55 rg
+45 481 Td
+(4.2 Authentication Flow \(MainActivity.java\)) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 465 Td
+(Authentication manages local login and registration without network reliance:) Tj
+ET
+0.647 0.423 1.0 rg
+50 450 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 448 Td
+(Tab Switching: Toggles between loginForm and signupForm with visual chip highlights.) Tj
+ET
+0.647 0.423 1.0 rg
+50 435 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 433 Td
+(Login: Queries dbHelper.loginUser\(email, password\). If valid, stores session in) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 420 Td
+(SessionManager and triggers enterApp\(\).) Tj
+ET
+0.647 0.423 1.0 rg
+50 407 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 405 Td
+(Sign Up: Validates name length, email format, and password length \(min 6 chars\). Calls) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 392 Td
+(dbHelper.registerUser\(\), which creates the user and seeds default settings.) Tj
+ET
+0.647 0.423 1.0 rg
+50 379 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 377 Td
+(Session Persistence: On startup, SessionManager checks SharedPreferences for an active) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 364 Td
+(email. If found, auto-logs into the Dashboard.) Tj
+ET
+BT
+/F1 11 Tf
+0.35 0.18 0.55 rg
+45 345 Td
+(4.3 Dashboard & Canvas Budget Ring) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 329 Td
+(The dashboard aggregates real-time spending insights for the current calendar month:) Tj
+ET
+0.647 0.423 1.0 rg
+50 314 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 312 Td
+(Hero Card: Displays monthly spending total, remaining budget, and the budget progress) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 299 Td
+(ring.) Tj
+ET
+0.647 0.423 1.0 rg
+50 286 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 284 Td
+(CircularProgressView.java: Custom Android Canvas 2D view rendering the background track,) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 271 Td
+(progress arc, percentage, and 'budget' subtext.) Tj
+ET
+0.647 0.423 1.0 rg
+50 258 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 256 Td
+(Stat Cards: 3 compact cards displaying total monthly transactions, daily average spending,) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 243 Td
+(and top expense category.) Tj
+ET
+0.647 0.423 1.0 rg
+50 230 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 228 Td
+(Filter Chips: Interactive horizontally scrollable chips \(All, Food, Transport, Rent, Fun,) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 215 Td
+(Utilities, Others\) to filter category breakdown.) Tj
+ET
+0.647 0.423 1.0 rg
+50 202 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 200 Td
+(Category Breakdown: Proportional progress bars scaled to the highest spending category) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 187 Td
+(with emoji badges.) Tj
+ET
+BT
+/F1 11 Tf
+0.35 0.18 0.55 rg
+45 168 Td
+(4.4 Searchable History & Activity) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 152 Td
+(The history screen provides chronological transaction logs with real-time search:) Tj
+ET
+0.647 0.423 1.0 rg
+50 137 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 135 Td
+(Real-Time Search: TextWatcher monitors user keystrokes in searchBox, filtering both) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 122 Td
+(descriptions and category names simultaneously.) Tj
+ET
+0.647 0.423 1.0 rg
+50 109 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 107 Td
+(Date Grouping: Transactions are bucketed by date \(YYYY-MM-DD\), rendering human-readable) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 94 Td
+(headers \(e.g. 'Thursday, Oct 29'\) and daily subtotals.) Tj
+ET
+0.647 0.423 1.0 rg
+50 81 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 79 Td
+(Tap to Edit: Clicking any transaction card opens the Edit Expense bottom sheet pre-filled) Tj
+ET
+
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 5629 >>
+stream
+1.0 1.0 1.0 rg
+0 0 595 842 re f
+0.647 0.423 1.0 rg
+0 834 595 8 re f
+BT
+/F2 8 Tf
+0.55 0.55 0.60 rg
+45 815 Td
+(AuraSpend - Android Technical Report & Implementation Guide) Tj
+ET
+0.85 0.85 0.90 RG
+0.5 w
+45 808 m 550 808 l S
+BT
+/F2 8 Tf
+0.55 0.55 0.60 rg
+45 30 Td
+(Confidential - Generated for AuraSpend Android Project) Tj
+ET
+0.85 0.85 0.90 RG
+0.5 w
+45 42 m 550 42 l S
+BT
+/F1 8 Tf
+0.647 0.423 1.0 rg
+500 30 Td
+(Page 3) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 780 Td
+(with the item's existing data.) Tj
+ET
+BT
+/F1 11 Tf
+0.35 0.18 0.55 rg
+45 761 Td
+(4.5 Add & Edit Expense Bottom Sheets) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 745 Td
+(Interactive slide-up bottom sheets with Material BottomSheetDialog:) Tj
+ET
+0.647 0.423 1.0 rg
+50 730 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 728 Td
+(Category Grid: 3x2 interactive tile grid \(Food, Transport, Rent, Fun, Utilities, Others\)) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 715 Td
+(with selected state highlights.) Tj
+ET
+0.647 0.423 1.0 rg
+50 702 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 700 Td
+(Dynamic Currency Prefix: Automatically displays the user's active currency symbol \($ / Rs.) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 687 Td
+(/ E / L\) next to the amount input.) Tj
+ET
+0.647 0.423 1.0 rg
+50 674 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 672 Td
+(Native DatePicker: Tapping the date field opens Android's native calendar DatePickerDialog) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 659 Td
+(defaulting to the current date.) Tj
+ET
+0.647 0.423 1.0 rg
+50 646 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 644 Td
+(Deletion Flow: Edit sheet provides a danger-styled 'Delete transaction' button with an) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 631 Td
+(AlertDialog confirmation prompt.) Tj
+ET
+BT
+/F1 11 Tf
+0.35 0.18 0.55 rg
+45 612 Td
+(4.6 Reports & On-Device PDF Engine) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 596 Td
+(Comprehensive financial insights with native PDF generation:) Tj
+ET
+0.647 0.423 1.0 rg
+50 581 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 579 Td
+(Period Tabs: Weekly \(Monday-current\), Monthly \(current month\), Annual \(current year\), and) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 566 Td
+(All-time.) Tj
+ET
+0.647 0.423 1.0 rg
+50 553 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 551 Td
+(Summary Card: Displays timeframe total spending and transaction count.) Tj
+ET
+0.647 0.423 1.0 rg
+50 538 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 536 Td
+(Native PDF Generator: Built using Android's native android.graphics.pdf.PdfDocument API.) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 523 Td
+(Generates clean multi-page tabular reports directly on the device.) Tj
+ET
+0.647 0.423 1.0 rg
+50 510 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 508 Td
+(Sharing: Opens the Android Share Sheet via FileProvider with temporary URI read) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 495 Td
+(permissions.) Tj
+ET
+BT
+/F1 11 Tf
+0.35 0.18 0.55 rg
+45 476 Td
+(4.7 Settings, Appearance & Data Portability) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 460 Td
+(User preferences, theme customization, and data backup:) Tj
+ET
+0.647 0.423 1.0 rg
+50 445 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 443 Td
+(Currency Selector: Modal chooser for 9 currencies \(USD, INR, EUR, GBP, AED, CAD, AUD, JPY,) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 430 Td
+(SGD\), updating all screens immediately.) Tj
+ET
+0.647 0.423 1.0 rg
+50 417 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 415 Td
+(Budget Adjustment: Dialog to adjust monthly budget threshold, updating the budget ring.) Tj
+ET
+0.647 0.423 1.0 rg
+50 402 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 400 Td
+(Appearance Toggle: Instant toggle between Dark Obsidian and Light Lavender themes,) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 387 Td
+(persisted in SQLite.) Tj
+ET
+0.647 0.423 1.0 rg
+50 374 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 372 Td
+(JSON Export/Import: Full backup compatibility with AuraSpend v2 backups. Imports validate) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 359 Td
+(JSON structure and transactionally insert records.) Tj
+ET
+0.95 0.92 1.0 rg
+45 332 505 22 re f
+0.647 0.423 1.0 rg
+45 332 4 22 re f
+BT
+/F1 13 Tf
+0.18 0.08 0.32 rg
+56 338 Td
+(5. Security, Build Quality & Verification) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+45 310 Td
+(Quality assurance and security measures:) Tj
+ET
+0.647 0.423 1.0 rg
+50 295 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 293 Td
+(Data Privacy: Internal app storage sandboxing prevents cross-app access without device) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 280 Td
+(root.) Tj
+ET
+0.647 0.423 1.0 rg
+50 267 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 265 Td
+(Password Protection: SHA-256 one-way cryptographic hashing protects credentials.) Tj
+ET
+0.647 0.423 1.0 rg
+50 252 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 250 Td
+(FileProvider Security: Content URIs with FLAG_GRANT_READ_URI_PERMISSION avoid broad) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 237 Td
+(external storage permissions.) Tj
+ET
+0.647 0.423 1.0 rg
+50 224 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 222 Td
+(Compilation: Verified with Gradle 8.9 and JDK 17 \(BUILD SUCCESSFUL, app-debug.apk) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 209 Td
+(generated\).) Tj
+ET
+0.647 0.423 1.0 rg
+50 196 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 194 Td
+(Automated Unit Tests: CurrencyAndCategoryTest passes 100% of test assertions for) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 181 Td
+(calculations, currencies, and hashing.) Tj
+ET
+0.647 0.423 1.0 rg
+50 168 4 4 re f
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 166 Td
+(Rootless Inspection: Full compatibility with Android Studio Database Inspector and Termux) Tj
+ET
+BT
+/F2 9.5 Tf
+0.22 0.22 0.25 rg
+62 153 Td
+(Wireless ADB.) Tj
+ET
+
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000134 00000 n 
+0000000209 00000 n 
+0000000279 00000 n 
+0000000357 00000 n 
+0000006497 00000 n 
+0000006643 00000 n 
+0000013334 00000 n 
+0000013480 00000 n 
+0000019162 00000 n 
+trailer
+<< /Size 12 /Root 1 0 R >>
+startxref
+19310
+%%EOF

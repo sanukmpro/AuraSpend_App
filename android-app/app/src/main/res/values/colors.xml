@@ -1,0 +1,5 @@
+<resources>
+    <color name="purple">#8B5CF6</color><color name="purple_dark">#6D28D9</color><color name="bg_dark">#090414</color>
+    <color name="card_dark">#171126</color><color name="text_dark">#F7F3FF</color><color name="muted_dark">#AAA1BC</color>
+    <color name="bg_light">#F7F4FC</color><color name="card_light">#FFFFFF</color><color name="text_light">#201632</color>
+</resources>

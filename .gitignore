@@ -1,0 +1,27 @@
+# Gradle
+.gradle/
+**/build/
+build/
+**/bin/
+
+# Android
+local.properties
+**/local.properties
+*.apk
+*.aar
+
+# IDE & Editor
+.idea/
+*.iml
+*.iws
+*.ipr
+.DS_Store
+.vscode/
+
+# Maven / Java
+target/
+**/target/
+*.class
+
+# Environment
+.env

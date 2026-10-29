@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090414">
+  <meta name="description" content="AuraSpend personal expense tracker">
+  <title>AuraSpend — Expense Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="authView" class="auth-view">
+    <div class="auth-glow glow-one"></div>
+    <div class="auth-glow glow-two"></div>
+    <div class="auth-card">
+      <div class="brand brand-auth">
+        <div class="brand-mark">✦</div>
+        <div>
+          <strong>AuraSpend</strong>
+          <span>Smart money, simple life.</span>
+        </div>
+      </div>
+
+      <div class="auth-tabs">
+        <button type="button" class="auth-tab active" data-auth-tab="login">Login</button>
+        <button type="button" class="auth-tab" data-auth-tab="signup">Sign up</button>
+      </div>
+
+      <form id="loginForm" class="auth-form">
+        <div class="field">
+          <label for="loginEmail">Email</label>
+          <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="loginPassword">Password</label>
+          <input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••" required>
+        </div>
+        <button class="primary-btn full-btn" type="submit">Login <span>→</span></button>
+        <p class="auth-hint">Your data is stored separately for each account on this device.</p>
+      </form>
+
+      <form id="signupForm" class="auth-form hidden" hidden>
+        <div class="field">
+          <label for="signupName">Name</label>
+          <input id="signupName" type="text" autocomplete="name" placeholder="Your name" minlength="2" required>
+        </div>
+        <div class="field">
+          <label for="signupEmail">Email</label>
+          <input id="signupEmail" type="email" autocomplete="email" placeholder="you@example.com" required>
+        </div>
+        <div class="field">
+          <label for="signupPassword">Password</label>
+          <input id="signupPassword" type="password" autocomplete="new-password" placeholder="At least 6 characters" minlength="6" required>
+        </div>
+        <div class="field">
+          <label for="signupCurrency">Default currency</label>
+          <select id="signupCurrency"></select>
+        </div>
+        <button class="primary-btn full-btn" type="submit">Create account <span>→</span></button>
+        <p class="auth-hint">This is a browser-only demo. Use a real backend before production use.</p>
+      </form>
+    </div>
+  </div>
+
+  <div id="appView" class="app-shell hidden">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✦</div>
+        <div>
+          <strong>AuraSpend</strong>
+          <span id="greeting">Your money, your aura.</span>
+        </div>
+      </div>
+      <button id="profileBtn" class="profile-btn" aria-label="Open profile">
+        <span id="profileInitial">A</span>
+      </button>
+    </header>
+
+    <main class="app-body">
+      <section id="dashboardView" class="view">
+        <div class="welcome-row">
+          <div>
+            <p class="eyebrow">OVERVIEW</p>
+            <h1 id="welcomeTitle">Good evening 👋</h1>
+          </div>
+          <button id="quickReportBtn" class="icon-btn" title="Reports">▤</button>
+        </div>
+
+        <div class="hero-card">
+          <div>
+            <span class="muted-label">This month</span>
+            <h2 id="monthlyTotal">$0.00</h2>
+            <p id="monthlyCompare">No expenses yet</p>
+          </div>
+          <div class="budget-ring" id="budgetRing">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="ring-track" cx="50" cy="50" r="42"></circle>
+              <circle id="ringProgress" class="ring-progress" cx="50" cy="50" r="42"></circle>
+            </svg>
+            <div class="ring-center">
+              <strong id="budgetPercent">0%</strong>
+              <span>budget</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="stat-grid">
+          <div class="mini-card"><span>Transactions</span><strong id="monthTransactions">0</strong></div>
+          <div class="mini-card"><span>Daily average</span><strong id="dailyAverage">$0</strong></div>
+          <div class="mini-card"><span>Top category</span><strong id="topCategory">—</strong></div>
+        </div>
+
+        <div class="section-heading">
+          <div><p class="eyebrow">SPENDING</p><h3>Category breakdown</h3></div>
+          <button id="clearFilterBtn" class="text-btn hidden">Clear</button>
+        </div>
+        <div id="categoryFilters" class="chip-row"></div>
+        <div id="categoryBreakdown" class="breakdown-list"></div>
+        <div id="emptyDashboard" class="empty-state hidden">
+          <div>◌</div><strong>No expenses for this period</strong><span>Add your first expense to see insights here.</span>
+        </div>
+      </section>
+
+      <section id="historyView" class="view hidden">
+        <div class="page-title-row">
+          <div><p class="eyebrow">ACTIVITY</p><h1>History</h1></div>
+          <button id="historySearchBtn" class="icon-btn">⌕</button>
+        </div>
+        <div id="historySearchWrap" class="search-wrap hidden">
+          <input id="historySearch" type="search" placeholder="Search description or category...">
+        </div>
+        <div id="historyList" class="history-list"></div>
+        <div id="emptyHistory" class="empty-state hidden">
+          <div>☷</div><strong>No transactions found</strong><span>Try another search or add an expense.</span>
+        </div>
+      </section>
+
+      <section id="reportsView" class="view hidden">
+        <div class="page-title-row">
+          <div><p class="eyebrow">INSIGHTS</p><h1>Reports</h1></div>
+          <button id="downloadReportBtn" class="primary-btn small-btn">PDF ↓</button>
+        </div>
+
+        <div class="report-tabs">
+          <button class="report-tab active" data-report-period="weekly">Weekly</button>
+          <button class="report-tab" data-report-period="monthly">Monthly</button>
+          <button class="report-tab" data-report-period="annual">Annual</button>
+          <button class="report-tab" data-report-period="all">All time</button>
+        </div>
+
+        <div class="report-summary-card">
+          <span id="reportPeriodLabel">This week</span>
+          <strong id="reportTotal">$0.00</strong>
+          <p id="reportTransactionCount">0 transactions</p>
+        </div>
+
+        <div class="section-heading"><div><p class="eyebrow">BREAKDOWN</p><h3>Top categories</h3></div></div>
+        <div id="reportCategories" class="breakdown-list"></div>
+
+        <div class="section-heading"><div><p class="eyebrow">DETAIL</p><h3>Transactions</h3></div></div>
+        <div id="reportTransactions" class="report-transactions"></div>
+      </section>
+
+      <section id="settingsView" class="view hidden">
+        <div class="page-title-row">
+          <div><p class="eyebrow">ACCOUNT</p><h1>Settings</h1></div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-profile">
+            <div id="settingsAvatar" class="large-avatar">A</div>
+            <div><strong id="settingsName">User</strong><span id="settingsEmail">email</span></div>
+          </div>
+
+          <div class="setting-row">
+            <div><div class="setting-title">Currency</div><div class="setting-desc">Used for all amounts and reports</div></div>
+            <select id="currencySelect" class="compact-select"></select>
+          </div>
+          <div class="setting-row">
+            <div><div class="setting-title">Monthly budget</div><div class="setting-desc">Used for your dashboard budget ring</div></div>
+            <input id="budgetInput" class="compact-input" type="number" min="0" step="0.01">
+          </div>
+          <div class="setting-row">
+            <div><div class="setting-title">Theme</div><div class="setting-desc">Switch between dark and light appearance</div></div>
+            <button id="themeToggle" class="toggle-btn" type="button"><span></span></button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="section-heading no-margin"><div><p class="eyebrow">DATA</p><h3>Backup & reports</h3></div></div>
+          <div class="settings-actions">
+            <button id="exportJsonBtn" class="secondary-btn">Export data (.json)</button>
+            <button id="importJsonBtn" class="secondary-btn">Import data</button>
+            <input id="importJsonInput" type="file" accept=".json" hidden>
+            <button id="settingsPdfBtn" class="secondary-btn">Generate all-time PDF</button>
+          </div>
+        </div>
+
+        <button id="logoutBtn" class="danger-btn full-btn">Log out</button>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button type="button" class="nav-item active" data-view="dashboard"><span>⌂</span><small>Dashboard</small></button>
+      <button type="button" id="addExpenseBtn" class="fab" aria-label="Add expense">+</button>
+      <button type="button" class="nav-item" data-view="history"><span>◷</span><small>History</small></button>
+      <button type="button" class="nav-item" data-view="reports"><span>▤</span><small>Reports</small></button>
+      <button type="button" class="nav-item" data-view="settings"><span>⚙</span><small>Settings</small></button>
+    </nav>
+  </div>
+
+  <!-- Add Expense -->
+  <div id="addModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-modal="addModal"></div>
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <div class="modal-header"><div><p class="eyebrow">NEW</p><h2>Add expense</h2></div><button class="close-btn" data-close-modal="addModal">×</button></div>
+      <form id="expenseForm">
+        <div class="field amount-field"><label for="amount">Amount <span id="amountCurrency">$</span></label><input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required></div>
+        <div class="field"><label>Category</label><div id="addCategoryGrid" class="category-grid">
+          <button type="button" class="category-option" data-category="food" aria-pressed="false"><span>🍔</span><small>Food</small></button>
+          <button type="button" class="category-option" data-category="transport" aria-pressed="false"><span>🚗</span><small>Transport</small></button>
+          <button type="button" class="category-option" data-category="rent" aria-pressed="false"><span>🏠</span><small>Rent</small></button>
+          <button type="button" class="category-option" data-category="fun" aria-pressed="false"><span>🎮</span><small>Fun</small></button>
+          <button type="button" class="category-option" data-category="utilities" aria-pressed="false"><span>💡</span><small>Utilities</small></button>
+          <button type="button" class="category-option" data-category="others" aria-pressed="false"><span>✦</span><small>Others</small></button>
+        </div></div>
+        <div class="form-row">
+          <div class="field"><label for="date">Date</label><input id="date" type="date" required></div>
+          <div class="field"><label for="description">Description</label><input id="description" type="text" maxlength="80" placeholder="Optional"></div>
+        </div>
+        <p id="formError" class="form-error hidden"></p>
+        <button id="addExpenseSubmit" class="primary-btn full-btn" type="submit" disabled>Add expense</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Expense -->
+  <div id="editModal" class="modal hidden">
+    <div class="modal-backdrop" data-close-modal="editModal"></div>
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <div class="modal-header"><div><p class="eyebrow">EDIT</p><h2>Edit expense</h2></div><button class="close-btn" data-close-modal="editModal">×</button></div>
+      <form id="editExpenseForm">
+        <input id="editId" type="hidden">
+        <div class="field amount-field"><label for="editAmount">Amount <span id="editAmountCurrency">$</span></label><input id="editAmount" type="number" min="0.01" step="0.01" required></div>
+        <div class="field"><label>Category</label><div id="editCategoryGrid" class="category-grid"></div></div>
+        <div class="form-row">
+          <div class="field"><label for="editDate">Date</label><input id="editDate" type="date" required></div>
+          <div class="field"><label for="editDescription">Description</label><input id="editDescription" type="text" maxlength="80"></div>
+        </div>
+        <p id="editFormError" class="form-error hidden"></p>
+        <button class="primary-btn full-btn" type="submit">Save changes</button>
+        <button id="deleteExpenseBtn" class="danger-btn full-btn" type="button">Delete transaction</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="app.js"></script>
+  <script>
+    // Critical Add Expense controller: intentionally independent of app initialization.
+    (function () {
+      var categories = {
+        food: ["🍔", "Food"], transport: ["🚗", "Transport"], rent: ["🏠", "Rent"],
+        fun: ["🎮", "Fun"], utilities: ["💡", "Utilities"], others: ["✦", "Others"]
+      };
+
+      function openAddMenu() {
+        var modal = document.getElementById("addModal");
+        var form = document.getElementById("expenseForm");
+        if (!modal || !form) return;
+        form.reset();
+        modal.classList.remove("hidden");
+        modal.style.display = "flex";
+        document.body.classList.add("modal-open");
+        window.AuraSelectedCategory = "";
+        document.querySelectorAll("#addCategoryGrid .category-option").forEach(function (b) {
+          b.classList.remove("selected");
+          b.setAttribute("aria-pressed", "false");
+        });
+        var date = document.getElementById("date");
+        if (date) {
+          var d = new Date();
+          date.value = d.getFullYear() + "-" + String(d.getMonth()+1).padStart(2,"0") + "-" + String(d.getDate()).padStart(2,"0");
+        }
+        var error = document.getElementById("formError");
+        if (error) { error.textContent = ""; error.classList.add("hidden"); }
+        var add = document.getElementById("addExpenseSubmit");
+        if (add) add.disabled = true;
+        setTimeout(function () { var amount = document.getElementById("amount"); if (amount) amount.focus(); }, 50);
+      }
+
+      window.AuraOpenAddExpense = openAddMenu;
+
+      document.addEventListener("click", function (event) {
+        var add = event.target.closest("#addExpenseBtn");
+        if (add) { event.preventDefault(); event.stopPropagation(); openAddMenu(); return; }
+
+        var category = event.target.closest("#addCategoryGrid .category-option");
+        if (category) {
+          event.preventDefault();
+          var key = category.getAttribute("data-category");
+          if (!categories[key]) return;
+          window.AuraSelectedCategory = key;
+          document.querySelectorAll("#addCategoryGrid .category-option").forEach(function (b) {
+            var selected = b.getAttribute("data-category") === key;
+            b.classList.toggle("selected", selected);
+            b.setAttribute("aria-pressed", selected ? "true" : "false");
+          });
+          var amount = Number((document.getElementById("amount") || {}).value);
+          var date = (document.getElementById("date") || {}).value;
+          var submit = document.getElementById("addExpenseSubmit");
+          if (submit) submit.disabled = !(amount > 0 && date && key);
+        }
+      }, true);
+
+      ["amount", "date"].forEach(function (id) {
+        document.addEventListener("input", function (event) {
+          if (event.target.id !== id) return;
+          var amount = Number((document.getElementById("amount") || {}).value);
+          var date = (document.getElementById("date") || {}).value;
+          var submit = document.getElementById("addExpenseSubmit");
+          if (submit) submit.disabled = !(amount > 0 && date && window.AuraSelectedCategory);
+        }, true);
+        document.addEventListener("change", function (event) {
+          if (event.target.id !== id) return;
+          var amount = Number((document.getElementById("amount") || {}).value);
+          var date = (document.getElementById("date") || {}).value;
+          var submit = document.getElementById("addExpenseSubmit");
+          if (submit) submit.disabled = !(amount > 0 && date && window.AuraSelectedCategory);
+        }, true);
+      });
+    })();
+  </script>
+</body>
+</html>
