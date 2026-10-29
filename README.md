@@ -1,6 +1,16 @@
 # ✦ AuraSpend — Standalone Android Expense Tracker & Backend API
 
+[![Download Release APK](https://img.shields.io/badge/Download-Release%20APK-8B5CF6?style=for-the-badge&logo=android)](https://github.com/sanukmpro/AuraSpend_App/releases)
+
 AuraSpend is a native Android expense tracking and budget management application built with **Java**, **Android Material Design**, **embedded standalone SQLite**, and an optional **Spring Boot REST API** backend.
+
+---
+
+## 📲 Download & Installation
+
+1. Go to the **[AuraSpend Releases Page](https://github.com/sanukmpro/AuraSpend_App/releases)**.
+2. Download **`app-release.apk`**.
+3. Install on your Android device (API 26 / Android 8.0+).
 
 ---
 
