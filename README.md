@@ -75,7 +75,7 @@ AuraSpendJava/
 1. Open **Android Studio**.
 2. Select **File → Open...** and choose this project directory:
    ```
-   C:\SAN\AuraSpendJava\AuraSpendJava
+   C:\USER\AuraSpendJava\AuraSpendJava
    ```
 3. Android Studio will automatically perform Gradle sync.
 4. Select an Android Emulator (API 26+) or a connected physical Android device.
